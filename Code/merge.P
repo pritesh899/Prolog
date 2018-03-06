@@ -1,0 +1,25 @@
+%returns zero if list is empty
+List_length([],0). 
+
+%recursively finds the length of the list
+List_length([Head|Tail],A) :- List_length(Tail,I),A is I+1.
+
+%checks if inputs given are lists or not
+merge(X,_,_):- not(is_list(X)), write('Wrong input..List is expected..'),fail.
+
+%checks if inputs given are lists or not
+merge(_,X,_):- not(is_list(X)), write('Second Input ,List is expected'),fail.
+
+%checks if length of lists are equal or not
+merge(L1,L2,_) :- List_length(L1, LEN1),List_length(L2,LEN2), not(LEN1 = LEN2 ),write('Lists are of different size..'), !,fail.
+
+%returns null list if both the lists are empty lists
+merge([],[],[]).
+
+%performs the merge operation
+merge([H|T],[H1|T1], [H,H1| R] ) :- merge(T,T1,R).
+
+
+
+
+

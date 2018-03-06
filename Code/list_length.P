@@ -1,0 +1,8 @@
+%checks if inputs given are lists or not
+list_length(X,_):- not(is_list(X)), write('wrong input.. list expected..'),fail.
+
+%returns zero if list is empty
+list_length([],0).
+
+%recursively finds the length of the list
+list_length([_|A],B):-list_length(A,C), B is C + 1.

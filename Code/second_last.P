@@ -1,0 +1,20 @@
+%returns zero if list is empty
+list_length([],0). 
+
+%recursively finds the length of the list
+list_length([H|T],A) :- list_length(T,I),A is I+1.
+
+%checks if length is zero returns message according
+second_last(X ,_) :- list_length(X,LEN), LEN = 0 , write( 'List is empty'), !,fail.
+
+%checks if inputs given are lists or not
+second_last(X,_):- not(is_list(X)), write('Wrong input..List expected..'), ! ,fail.
+
+%checks if length is 1 and returns message accordingly
+second_last(L ,_) :- list_length(L,LEN), LEN = 1 , write( 'only one element in the list'),!,fail.
+
+%if only elements are there return head of the element
+second_last([H|T],B) :-  list_length(T, LEN), LEN = 1 , B is H.
+
+%works recursively till it reaches the the above step i.e having only two elements 
+second_last([H|T],F) :- second_last(T , F).
