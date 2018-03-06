@@ -1,0 +1,14 @@
+%checking if input is a list or not
+reverseL(X,_):- not(is_list(X)), write('Wrong input... list expected..'),fail.
+
+%calling the function by taking the input
+reverseL(List, ReversedList) :-
+        reverseL(List, ReversedList, []).
+
+%base case
+reverseL([], A, A).
+
+%recursively performing the reverse of the list
+reverseL([H|T], A, L) :-
+        reverseL(T, A, [H|L]).
+

@@ -1,0 +1,10 @@
+%checking if input is a list or not
+suffix(X,_,_):- not(is_list(X)), write('First input wrong.. list expected..'),fail.
+suffix(_,X,_):- not(is_list(X)), write('Second input wrong.. list expected..'),fail.
+
+%base case
+suffix([], List, List).
+
+%recursively appending
+suffix([Head|List_1], List_2, [Head|List_3]) :- 
+	suffix(List_1, List_2, List_3).
